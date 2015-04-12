@@ -1,10 +1,10 @@
 DATABASES = {
  'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'cloud',
+            'NAME': 'clouddb',
             'USER': 'cloud',
             'PASSWORD': 'cloud6998',
-            'HOST': 'traveltogether.chgh9mmogaje.us-east-1.rds.amazonaws.com',
+            'HOST': 'clouddb.chgh9mmogaje.us-east-1.rds.amazonaws.com:3306',
             'PORT': 3306,
         }
 }
