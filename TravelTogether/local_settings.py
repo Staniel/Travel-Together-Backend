@@ -4,7 +4,7 @@ DATABASES = {
             'NAME': 'clouddb',
             'USER': 'cloud',
             'PASSWORD': 'cloud6998',
-            'HOST': 'clouddb.chgh9mmogaje.us-east-1.rds.amazonaws.com:3306',
+            'HOST': 'clouddb.chgh9mmogaje.us-east-1.rds.amazonaws.com',
             'PORT': 3306,
         }
 }
