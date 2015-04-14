@@ -41,3 +41,11 @@ http://cloud6998.elasticbeanstalk.com/api/v1/plan/schema/?format=json
 ###plans in a range
 
 http://cloud6998.elasticbeanstalk.com/api/v1/plan/set/1;3/?format=json
+
+###To Do
+
+read more doc of Tastypie, add more functionality of APIs
+
+incorporate python-social-oath
+
+incorporate api authentication
