@@ -4,10 +4,6 @@ TravelTogether is a Android mobile app for user with Facebook account to create,
 
 This repo is the backend REST api design for our app. 
 
-###admin page:
-
-http://cloud6998.elasticbeanstalk.com/admin
-
 ###API example:
 
 ###general description for available endpoints
