@@ -13,8 +13,10 @@ http://cloud6998.elasticbeanstalk.com/api/v1/?format=json
 ###authenticate
 
 http://cloud6998.elasticbeanstalk.com/api/v1/auth/?access_token=XXX
+
+result:
 ```
-result:{
+{
   err:{
     code:400,
     msg: 'invalid token'
@@ -39,8 +41,10 @@ POST: http://cloud6998.elasticbeanstalk.com/api/v1/plan/add/?access_token=XXX&fo
 }
 ```
 
+
+return:
 ```
-return:{
+{
   err:{
     code:0,
     msg:'success'
