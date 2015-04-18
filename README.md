@@ -13,7 +13,7 @@ http://cloud6998.elasticbeanstalk.com/api/v1/?format=json
 ###authenticate
 
 http://cloud6998.elasticbeanstalk.com/api/v1/auth/?access_token=XXX
-
+```
 result:{
   err:{
     code:400,
@@ -21,10 +21,12 @@ result:{
   },
   data:{}
 }
+```
 
 ###add plans
 
 POST: http://cloud6998.elasticbeanstalk.com/api/v1/plan/add/?access_token=XXX&format=json
+```
 {
   'title': 'XXX',
   'destination': 'XXX',
@@ -35,6 +37,9 @@ POST: http://cloud6998.elasticbeanstalk.com/api/v1/plan/add/?access_token=XXX&fo
   'limit':5,
   'friendlist':['fbid1', 'fbid2']
 }
+```
+
+```
 return:{
   err:{
     code:0,
@@ -42,11 +47,13 @@ return:{
   },
   data:{}
 }
-
+```
 
 ###edit plans
 
 PUT: http://cloud6998.elasticbeanstalk.com/api/v1/plan/edit/:planid?access_token=XXX&format=json
+
+```
 {
   'title': 'XXX',
   'destination': 'XXX',
@@ -57,30 +64,40 @@ PUT: http://cloud6998.elasticbeanstalk.com/api/v1/plan/edit/:planid?access_token
   'limit':5,
   'friendlist':['fbid1', 'fbid2']
 }
-return:{
+```
+
+return:
+```
+{
   err:{
     code:0,
     msg:'success'
   },
   data:{}
 }
+```
 
 DELETE : http://cloud6998.elasticbeanstalk.com/api/v1/plan/delete/:planid?access_token=XXX&format=json
 
-return:{
+return:
+
+```
+{
   err:{
     code:0,
     msg:'success'
   },
   data:{}
 }
-
+```
 
 ###list all plans
 
 GET: http://cloud6998.elasticbeanstalk.com/api/v1/plan/?type=all|mine|joined&access_token=XXX&format=json
 
-result:{
+result:
+```
+{
   err:{
     'code': 0,
     'msg': 'success'
@@ -100,23 +117,11 @@ result:{
     'length': 2
   },{}]
   }
-  
 }
-
-
-
-###plan schema
-
-http://cloud6998.elasticbeanstalk.com/api/v1/plan/schema/?format=json
-
-###plans in a range
-
-http://cloud6998.elasticbeanstalk.com/api/v1/plan/set/1;3/?format=json
+```
 
 ###To Do
 
 read more doc of Tastypie, add more functionality of APIs
-
-incorporate python-social-oath
 
 incorporate api authentication
