@@ -6,13 +6,9 @@ This repo is the backend REST api design for our app.
 
 ###API example:
 
-###general description for available endpoints
-
-http://cloud6998.elasticbeanstalk.com/api/v1/?format=json
-
 ###authenticate
 
-http://cloud6998.elasticbeanstalk.com/api/v1/auth/?access_token=XXX
+http://cloud6998.elasticbeanstalk.com/v1/auth/:access_token/
 
 result:
 ```
@@ -27,7 +23,7 @@ result:
 
 ###add plans
 
-POST: http://cloud6998.elasticbeanstalk.com/api/v1/plan/add/?access_token=XXX&format=json
+POST: http://cloud6998.elasticbeanstalk.com/v1/plan/add/:access_token/
 ```
 {
   'title': 'XXX',
@@ -54,7 +50,7 @@ return:
 
 ###edit plans
 
-PUT: http://cloud6998.elasticbeanstalk.com/api/v1/plan/edit/:planid?access_token=XXX&format=json
+PUT: http://cloud6998.elasticbeanstalk.com/v1/plan/edit/:planid/:access_token/
 
 ```
 {
@@ -82,7 +78,7 @@ return:
 
 ###Delete plan
 
-DELETE : http://cloud6998.elasticbeanstalk.com/api/v1/plan/delete/:planid?access_token=XXX&format=json
+DELETE : http://cloud6998.elasticbeanstalk.com/v1/plan/delete/:planid/:access_token/
 
 return:
 
@@ -99,7 +95,7 @@ return:
 
 ###join plan
 
-POST : http://cloud6998.elasticbeanstalk.com/api/v1/plan/join/:planid?access_token=XXX&format=json
+POST : http://cloud6998.elasticbeanstalk.com/v1/plan/join/:planid/:access_token/
 
 return:
 
@@ -115,7 +111,7 @@ return:
 
 ###unjoin plan
 
-POST : http://cloud6998.elasticbeanstalk.com/api/v1/plan/unjoin/:planid?access_token=XXX&format=json
+POST : http://cloud6998.elasticbeanstalk.com/v1/plan/unjoin/:planid/:access_token/
 
 return:
 
@@ -133,7 +129,7 @@ return:
 
 get joined user fbid and name for this plan and other joinable editable condition, other info has already been retrieved in list page.
 
-GET: http://cloud6998.elasticbeanstalk.com/api/v1/plan/:planid&access_token=XXX&format=json
+GET: http://cloud6998.elasticbeanstalk.com/v1/plan/:planid/:access_token/
 
 result:
 ```
@@ -162,7 +158,9 @@ result:
 
 ###list all plans
 
-GET: http://cloud6998.elasticbeanstalk.com/api/v1/plan/?type=all|mine|joined&access_token=XXX&format=json
+GET: http://cloud6998.elasticbeanstalk.com/v1/plan/:access_token/:type/
+
+type=all|mine|joined
 
 result:
 ```
