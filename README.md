@@ -129,6 +129,31 @@ return:
 }
 ```
 
+###get plan detail
+
+GET: http://cloud6998.elasticbeanstalk.com/api/v1/plan/:planid&access_token=XXX&format=json
+
+result:
+```
+{
+  err:{
+    'code': 0,
+    'msg': 'success'
+  },
+  data:{
+    'joined':[
+      {
+        'fbid':'bbb',
+        'name':'xinyue'
+      },
+      {
+        'fbid':'ccc',
+        'name':'qiuyang'
+      }
+    ]
+}
+```
+
 
 ###list all plans
 
