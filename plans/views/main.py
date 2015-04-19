@@ -1,3 +1,4 @@
 from django.http import HttpResponse
-def main(request):
-	return HttpResponse("hello world")
+
+def auth(request):
+	return HttpResponse("hello auth")
