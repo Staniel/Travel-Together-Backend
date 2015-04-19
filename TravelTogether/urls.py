@@ -11,5 +11,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/v1', include('plans.urls', namespace="plans")),
+    url(r'^v1', include('plans.urls', namespace="plans")),
 ]
