@@ -131,7 +131,7 @@ return:
 
 ###get plan detail
 
-get joined user fbid and name for this plan, other info has already been retrieved in list page.
+get joined user fbid and name for this plan and other joinable editable condition, other info has already been retrieved in list page.
 
 GET: http://cloud6998.elasticbeanstalk.com/api/v1/plan/:planid&access_token=XXX&format=json
 
@@ -143,6 +143,9 @@ result:
     'msg': 'success'
   },
   data:{
+    'joinable': True,
+    'editable': False,
+    'joined': True,
     'joined_list':[
       {
         'fbid':'bbb',
