@@ -10,42 +10,190 @@ This repo is the backend REST api design for our app.
 
 http://cloud6998.elasticbeanstalk.com/api/v1/?format=json
 
-###list all users
+###authenticate
 
-http://cloud6998.elasticbeanstalk.com/api/v1/user/?format=json
+http://cloud6998.elasticbeanstalk.com/api/v1/auth/?access_token=XXX
 
-###user detail
+result:
+```
+{
+  err:{
+    code:400,
+    msg: 'invalid token'
+  },
+  data:{}
+}
+```
 
-http://cloud6998.elasticbeanstalk.com/api/v1/user/1/?format=json
+###add plans
 
-###user schema
+POST: http://cloud6998.elasticbeanstalk.com/api/v1/plan/add/?access_token=XXX&format=json
+```
+{
+  'title': 'XXX',
+  'destination': 'XXX',
+  'depart_time': XXXX-XX-XX,
+  'length': 3,
+  'description': "XXX",
+  'type': 'all'|'friends'|'private',
+  'limit':5,
+  'friendlist':['fbid1', 'fbid2']
+}
+```
 
-http://cloud6998.elasticbeanstalk.com/api/v1/user/schema/?format=json
+return:
+```
+{
+  err:{
+    code:0,
+    msg:'success'
+  },
+  data:{}
+}
+```
 
-###user in a range
+###edit plans
 
-http://cloud6998.elasticbeanstalk.com/api/v1/user/set/1;3/?format=json
+PUT: http://cloud6998.elasticbeanstalk.com/api/v1/plan/edit/:planid?access_token=XXX&format=json
+
+```
+{
+  'title': 'XXX',
+  'destination': 'XXX',
+  'depart_time': XXXX-XX-XX,
+  'length': 3,
+  'description': "XXX",
+  'type': 'all'|'friends'|'private',
+  'limit':5,
+  'friendlist':['fbid1', 'fbid2']
+}
+```
+
+return:
+```
+{
+  err:{
+    code:0,
+    msg:'success'
+  },
+  data:{}
+}
+```
+
+###Delete plan
+
+DELETE : http://cloud6998.elasticbeanstalk.com/api/v1/plan/delete/:planid?access_token=XXX&format=json
+
+return:
+
+```
+{
+  err:{
+    code:0,
+    msg:'success'
+  },
+  data:{}
+}
+```
+
+
+###join plan
+
+POST : http://cloud6998.elasticbeanstalk.com/api/v1/plan/join/:planid?access_token=XXX&format=json
+
+return:
+
+```
+{
+  err:{
+    code:0,
+    msg:'success'
+  },
+  data:{}
+}
+```
+
+###unjoin plan
+
+POST : http://cloud6998.elasticbeanstalk.com/api/v1/plan/unjoin/:planid?access_token=XXX&format=json
+
+return:
+
+```
+{
+  err:{
+    code:0,
+    msg:'success'
+  },
+  data:{}
+}
+```
+
+###get plan detail
+
+get joined user fbid and name for this plan and other joinable editable condition, other info has already been retrieved in list page.
+
+GET: http://cloud6998.elasticbeanstalk.com/api/v1/plan/:planid&access_token=XXX&format=json
+
+result:
+```
+{
+  err:{
+    'code': 0,
+    'msg': 'success'
+  },
+  data:{
+    'joinable': True,
+    'editable': False,
+    'joined': True,
+    'joined_list':[
+      {
+        'fbid':'bbb',
+        'name':'xinyue'
+      },
+      {
+        'fbid':'ccc',
+        'name':'qiuyang'
+      }
+    ]
+}
+```
+
 
 ###list all plans
 
-http://cloud6998.elasticbeanstalk.com/api/v1/plan/?format=json
+GET: http://cloud6998.elasticbeanstalk.com/api/v1/plan/?type=all|mine|joined&access_token=XXX&format=json
 
-###plan detail
+result:
+```
+{
+  err:{
+    'code': 0,
+    'msg': 'success'
+  },
+  data:{
+  planlist:[{
+    'planid': 1,
+    'holder': {
+      'fbid':'aaa',
+      'name':'hong'
+    },
+    'title': 'qqq',
+    'description': 'aaa',
+    'destination': 'ny',
+    'depart_time': 'xxxx-xx-xx',
+    'limit': 1,
+    'length': 2,
+    'visible_type': 0
+  }]
+  }
+}
+```
 
-http://cloud6998.elasticbeanstalk.com/api/v1/plan/1/?format=json
-
-###plan schema
-
-http://cloud6998.elasticbeanstalk.com/api/v1/plan/schema/?format=json
-
-###plans in a range
-
-http://cloud6998.elasticbeanstalk.com/api/v1/plan/set/1;3/?format=json
+Non-visible private plan will be filtered out at backend. Filtering of non-friend plan would be done in Mobile side.
 
 ###To Do
 
 read more doc of Tastypie, add more functionality of APIs
-
-incorporate python-social-oath
 
 incorporate api authentication
