@@ -80,6 +80,8 @@ return:
 }
 ```
 
+###Delete plan
+
 DELETE : http://cloud6998.elasticbeanstalk.com/api/v1/plan/delete/:planid?access_token=XXX&format=json
 
 return:
