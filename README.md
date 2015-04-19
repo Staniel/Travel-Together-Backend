@@ -41,7 +41,6 @@ POST: http://cloud6998.elasticbeanstalk.com/api/v1/plan/add/?access_token=XXX&fo
 }
 ```
 
-
 return:
 ```
 {
@@ -95,6 +94,40 @@ return:
 }
 ```
 
+
+###join plan
+
+POST : http://cloud6998.elasticbeanstalk.com/api/v1/plan/join/:planid?access_token=XXX&format=json
+
+return:
+
+```
+{
+  err:{
+    code:0,
+    msg:'success'
+  },
+  data:{}
+}
+```
+
+###unjoin plan
+
+POST : http://cloud6998.elasticbeanstalk.com/api/v1/plan/unjoin/:planid?access_token=XXX&format=json
+
+return:
+
+```
+{
+  err:{
+    code:0,
+    msg:'success'
+  },
+  data:{}
+}
+```
+
+
 ###list all plans
 
 GET: http://cloud6998.elasticbeanstalk.com/api/v1/plan/?type=all|mine|joined&access_token=XXX&format=json
@@ -118,11 +151,14 @@ result:
     'destination': 'ny',
     'depart_time': 'xxxx-xx-xx',
     'limit': 1,
-    'length': 2
-  },{}]
+    'length': 2,
+    'visible_type': 0
+  }]
   }
 }
 ```
+
+Non-visible private plan will be filtered out at backend. Filtering of non-friend plan would be done in Mobile side.
 
 ###To Do
 
