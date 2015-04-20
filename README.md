@@ -182,7 +182,7 @@ result:
     'depart_time': 'xxxx-xx-xx',
     'limit': 1,
     'length': 2,
-    'visible_type': 0
+    'visible_type': 1
   }]
   }
 }
