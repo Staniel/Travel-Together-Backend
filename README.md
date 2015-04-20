@@ -50,7 +50,7 @@ return:
 
 ###edit plans
 
-PUT: http://cloud6998.elasticbeanstalk.com/v1/plan/edit/:planid/:access_token/
+PUT: http://cloud6998.elasticbeanstalk.com/v1/plan/edit/:access_token/:planid/
 
 ```
 {
@@ -78,7 +78,7 @@ return:
 
 ###Delete plan
 
-DELETE : http://cloud6998.elasticbeanstalk.com/v1/plan/delete/:planid/:access_token/
+DELETE : http://cloud6998.elasticbeanstalk.com/v1/plan/delete/:access_token/:planid/
 
 return:
 
@@ -95,7 +95,7 @@ return:
 
 ###join plan
 
-POST : http://cloud6998.elasticbeanstalk.com/v1/plan/join/:planid/:access_token/
+POST : http://cloud6998.elasticbeanstalk.com/v1/plan/join/:access_token/:planid/
 
 return:
 
@@ -111,7 +111,7 @@ return:
 
 ###unjoin plan
 
-POST : http://cloud6998.elasticbeanstalk.com/v1/plan/unjoin/:planid/:access_token/
+POST : http://cloud6998.elasticbeanstalk.com/v1/plan/unjoin/:access_token/:planid/
 
 return:
 
@@ -129,7 +129,7 @@ return:
 
 get joined user fbid and name for this plan and other joinable editable condition, other info has already been retrieved in list page.
 
-GET: http://cloud6998.elasticbeanstalk.com/v1/plan/:planid/:access_token/
+GET: http://cloud6998.elasticbeanstalk.com/v1/plan/:access_token/:planid/
 
 result:
 ```
@@ -182,7 +182,7 @@ result:
     'depart_time': 'xxxx-xx-xx',
     'limit': 1,
     'length': 2,
-    'visible_type': 0
+    'visible_type': 1
   }]
   }
 }
