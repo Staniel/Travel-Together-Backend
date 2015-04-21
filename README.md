@@ -31,7 +31,7 @@ POST: http://cloud6998.elasticbeanstalk.com/v1/plan/add/:access_token/
   'depart_time': XXXX-XX-XX,
   'length': 3,
   'description': "XXX",
-  'type': 'all'|'friends'|'private',
+  'type': 1, //(1 'all'| 2 'friends'|3 'private',)
   'limit':5,
   'friendlist':['fbid1', 'fbid2']
 }
@@ -59,7 +59,7 @@ PUT: http://cloud6998.elasticbeanstalk.com/v1/plan/edit/:access_token/:planid/
   'depart_time': XXXX-XX-XX,
   'length': 3,
   'description': "XXX",
-  'type': 'all'|'friends'|'private',
+  'type': 1, //(1 'all'| 2 'friends'|3 'private',)
   'limit':5,
   'friendlist':['fbid1', 'fbid2']
 }
