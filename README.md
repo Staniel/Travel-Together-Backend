@@ -23,7 +23,7 @@ result:
 
 ###add plans
 
-POST: http://cloud6998.elasticbeanstalk.com/v1/plan/add/:access_token/
+POST: http://cloud6998.elasticbeanstalk.com/v1/add/:access_token/
 ```
 {
   'title': 'XXX',
@@ -50,7 +50,7 @@ return:
 
 ###edit plans
 
-PUT: http://cloud6998.elasticbeanstalk.com/v1/plan/edit/:access_token/:planid/
+POST: http://cloud6998.elasticbeanstalk.com/v1/edit/:access_token/:planid/
 
 ```
 {
@@ -78,7 +78,7 @@ return:
 
 ###Delete plan
 
-DELETE : http://cloud6998.elasticbeanstalk.com/v1/plan/delete/:access_token/:planid/
+DELETE : http://cloud6998.elasticbeanstalk.com/v1/delete/:access_token/:planid/
 
 return:
 
@@ -95,7 +95,7 @@ return:
 
 ###join plan
 
-POST : http://cloud6998.elasticbeanstalk.com/v1/plan/join/:access_token/:planid/
+POST : http://cloud6998.elasticbeanstalk.com/v1/join/:access_token/:planid/
 
 return:
 
