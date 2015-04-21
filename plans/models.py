@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.exceptions import ValidationError
 import json
 # Create your models here.
 
@@ -24,11 +24,17 @@ class Plan(models.Model):
 	limit = models.IntegerField()
 	depart_time = models.DateTimeField()
 	length = models.IntegerField()
-	visible_type = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(3)])
+	visible_type = models.IntegerField()
 	def __str__(self):
 		return self.destination+'.'+self.description
+	def clean(self):
+		if self.limit < 2 or self.limit > 20:
+			raise ValidationError('group size too large or too small')
+		if self.visible_type != 1 and self.visible_type != 2 and self.visible_type != 3:
+			raise ValidationError('visible_type parameter error')
 	def as_dict(self):
 		return {
+		'plan_id': self.id,
 		'holder': self.holder.as_dict(),
 		'title': self.title,
 		'destination': self.destination,
@@ -42,11 +48,15 @@ class Plan(models.Model):
 class JoinedPlan(models.Model):
 	joined_user = models.ForeignKey(FBUser)
 	joined_plan = models.ForeignKey(Plan)
+	class Meta:
+		unique_together = ('joined_user', 'joined_plan')
 	def __str__(self):
 		return self.joined_user.__str__()+" join "+self.joined_plan.__str__()
 
 class PrivatePlan(models.Model):
 	accessible_user = models.ForeignKey(FBUser)
 	accessible_plan = models.ForeignKey(Plan)
+	class Meta:
+		unique_together = ('accessible_user', 'accessible_plan')
 	def __str__(self):
 		return self.accessible_user.__str__()+" can see "+self.accessible_plan.__str__()

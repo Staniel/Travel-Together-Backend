@@ -20,14 +20,7 @@ def get_joined_plans(userid):
 	for joinedplan in joinedplans:
 		plans.append(joinedplan.joined_plan.as_dict())
 	return plans
-
-def get_plan_by_id(planid):
-	try:
-		plan = Plan.objects.get(id__exact=planid)
-		return plan
-	except:
-		return None
-
+	
 def get_joiners(plan):
 	joiners = []
 	joinedplans = JoinedPlan.objects.filter(joined_plan__exact=plan.id)
