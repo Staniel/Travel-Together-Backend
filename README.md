@@ -192,6 +192,4 @@ Non-visible private plan will be filtered out at backend. Filtering of non-frien
 
 ###To Do
 
-read more doc of Tastypie, add more functionality of APIs
-
-incorporate api authentication
+Version 1 finished. Wait for mobile developer providing feedback and make improvement
