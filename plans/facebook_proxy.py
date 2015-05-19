@@ -4,26 +4,26 @@ from plans.models import FBUser
 import json
 def login_auth(access_token):
 	result = {}
-	try:
-		graph = facebook.GraphAPI(access_token)
-		profile = graph.get_object("me")
-		fbid = profile['id']
-		users = FBUser.objects.filter(fbid=fbid)
-		if len(users) == 1:
-			user = users[0]
-			user.access_token = access_token
-			user.save()
-			return format(0, 'success', user.as_dict())
-		elif len(user) == 0:
-			newUser = FBUser()
-			newUser.fbid = fbid
-			newUser.name = profile['name']
-			newUser.access_token = access_token
-			newUser.save()
-			return format(0, 'create a new user', newUser.as_dict())
-	except Exception as e:
-		print e
-		return format(401, str(e))
+	# try:
+	graph = facebook.GraphAPI(access_token)
+	profile = graph.get_object("me")
+	fbid = profile['id']
+	users = FBUser.objects.filter(fbid=fbid)
+	if len(users) == 1:
+		user = users[0]
+		user.access_token = access_token
+		user.save()
+		return format(0, 'success', user.as_dict())
+	elif len(users) == 0:
+		newUser = FBUser()
+		newUser.fbid = fbid
+		newUser.name = profile['name']
+		newUser.access_token = access_token
+		newUser.save()
+		return format(0, 'create a new user', newUser.as_dict())
+	# except Exception as e:
+	# 	print e
+	# 	return format(401, str(e))
 
 def get_friend_list(userid):
 	try:
