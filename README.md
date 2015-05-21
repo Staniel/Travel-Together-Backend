@@ -8,7 +8,13 @@ This repo is the backend REST api design for our app.
 
 ###authenticate
 
+POST:
 http://cloud6998.elasticbeanstalk.com/v1/auth/:access_token/
+
+{
+  'avatar': "url"
+}
+
 
 result:
 ```
