@@ -179,7 +179,7 @@ result:
     'code': 0,
     'msg': 'success'
   },
-  data:{
+  data:
   [{
             "count": 2,
             "length": 3,
