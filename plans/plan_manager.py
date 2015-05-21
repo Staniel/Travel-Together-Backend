@@ -6,19 +6,31 @@ def get_available_plans(userid):
 	plan_list = []
 	for plan in plans:
 		if get_viewable(userid, plan):
-			plan_list.append(plan.as_dict())
+			single_plan = plan.as_dict()
+			count = JoinedPlan.objects.filter(joined_plan__exact=plan.id).count()
+			single_plan['count'] = count
+			plan_list.append(single_plan)
 	return plan_list
 
 def get_my_plans(userid):
 	plans = Plan.objects.filter(holder__exact=userid)
 	plan_list = [plan.as_dict() for plan in plans]
+	plan_list = []
+	for plan in plans:
+		single_plan = plan.as_dict()
+		count = JoinedPlan.objects.filter(joined_plan__exact=plan.id).count()
+		single_plan['count'] = count
+		plan_list.append(single_plan)	
 	return plan_list
 
 def get_joined_plans(userid):
 	plans = []
 	joinedplans = JoinedPlan.objects.filter(joined_user__exact=userid)
 	for joinedplan in joinedplans:
-		plans.append(joinedplan.joined_plan.as_dict())
+		single_plan = joinedplan.joined_plan.as_dict()
+		count = JoinedPlan.objects.filter(joined_plan__exact=joinedplan.joined_plan.id).count()
+		single_plan['count'] = count
+		plans.append(single_plan)
 	return plans
 	
 def get_joiners(plan):

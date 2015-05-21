@@ -2,28 +2,35 @@ import facebook
 from format_result import format
 from plans.models import FBUser
 import json
-def login_auth(access_token):
+def login_auth(access_token, avatar=""):
 	result = {}
-	# try:
-	graph = facebook.GraphAPI(access_token)
-	profile = graph.get_object("me")
-	fbid = profile['id']
-	users = FBUser.objects.filter(fbid=fbid)
-	if len(users) == 1:
-		user = users[0]
-		user.access_token = access_token
-		user.save()
-		return format(0, 'success', user.as_dict())
-	elif len(users) == 0:
-		newUser = FBUser()
-		newUser.fbid = fbid
-		newUser.name = profile['name']
-		newUser.access_token = access_token
-		newUser.save()
-		return format(0, 'create a new user', newUser.as_dict())
-	# except Exception as e:
-	# 	print e
-	# 	return format(401, str(e))
+	try:
+	# print access_token
+		graph = facebook.GraphAPI(access_token)
+		profile = graph.get_object("me")
+		fbid = profile['id']
+		users = FBUser.objects.filter(fbid=fbid)
+		if len(users) == 1:
+			print profile
+			user = users[0]
+			user.name = profile['name']
+			user.access_token = access_token
+			if avatar != "":
+				user.avatar = avatar
+			user.save()
+			return format(0, 'success', user.as_dict())
+		elif len(users) == 0:
+			newUser = FBUser()
+			newUser.fbid = fbid
+			newUser.name = profile['name']
+			newUser.access_token = access_token
+			if avatar != "":
+				newUser.avatar = avatar
+			newUser.save()
+			return format(0, 'create a new user', newUser.as_dict())
+	except Exception as e:
+		print e
+		return format(401, str(e))
 
 def get_friend_list(userid):
 	try:
