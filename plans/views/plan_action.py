@@ -135,6 +135,8 @@ def unjoin_plan(request, access_token, planid):
 	userid = result['data']['id']
 	try:
 		plan = Plan.objects.get(id__exact=planid)
+		print plan
+		print userid
 		r = JoinedPlan.objects.filter(joined_user__exact=userid, joined_plan=plan)
 		if len(r) == 0:
 			result = format(403, 'unjoin permission denied')

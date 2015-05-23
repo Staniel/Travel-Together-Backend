@@ -5,13 +5,11 @@ import json
 def login_auth(access_token, avatar=""):
 	result = {}
 	try:
-	# print access_token
 		graph = facebook.GraphAPI(access_token)
 		profile = graph.get_object("me")
 		fbid = profile['id']
 		users = FBUser.objects.filter(fbid=fbid)
 		if len(users) == 1:
-			print profile
 			user = users[0]
 			user.name = profile['name']
 			user.access_token = access_token
