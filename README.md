@@ -10,11 +10,11 @@ This repo is the backend REST api design for our app.
 
 POST:
 http://cloud6998.elasticbeanstalk.com/v1/auth/:access_token/
-
+```
 {
   'avatar': "url"
 }
-
+```
 
 result:
 ```
@@ -140,24 +140,28 @@ GET: http://cloud6998.elasticbeanstalk.com/v1/plan/:access_token/:planid/
 result:
 ```
 {
-  err:{
-    'code': 0,
-    'msg': 'success'
-  },
-  data:{
-    'joinable': True,
-    'editable': False,
-    'joined': True,
-    'joined_list':[
-      {
-        'fbid':'bbb',
-        'name':'xinyue'
-      },
-      {
-        'fbid':'ccc',
-        'name':'qiuyang'
-      }
-    ]
+    "data": {
+        "joinable": false,
+        "editable": false,
+        "plan_id": "1",
+        "joined": false,
+        "joined_list": [
+            {
+                "id": "123456",
+                "avatar": "",
+                "name": "Terrence"
+            },
+            {
+                "id": "56677",
+                "avatar": "",
+                "name": "Staniel"
+            }
+        ]
+    },
+    "err": {
+        "msg": "success",
+        "code": 0
+    }
 }
 ```
 
@@ -175,22 +179,23 @@ result:
     'code': 0,
     'msg': 'success'
   },
-  data:{
-  planlist:[{
-    'planid': 1,
-    'holder': {
-      'fbid':'aaa',
-      'name':'hong'
-    },
-    'title': 'qqq',
-    'description': 'aaa',
-    'destination': 'ny',
-    'depart_time': 'xxxx-xx-xx',
-    'limit': 1,
-    'length': 2,
-    'visible_type': 1
-  }]
-  }
+  data:
+  [{
+            "count": 2,
+            "length": 3,
+            "plan_id": 1,
+            "description": "hahha",
+            "title": "trip to Seattle",
+            "visible_type": 1,
+            "limit": 3,
+            "destination": "Seattle",
+            "holder": {
+                "id": "367582766756159",
+                "avatar": "",
+                "name": "Lixin Daniel Yao"
+            },
+            "depart_time": "2015-04-19 22:09:24+00:00"
+        }]
 }
 ```
 
