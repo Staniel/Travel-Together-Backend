@@ -9,7 +9,7 @@ urlpatterns = patterns('',
 	
 	url(r'delete/(?P<access_token>\w+)/(?P<planid>\d+)$', 'plans.views.plan_action.delete_plan', name='delete'),
 	url(r'edit/(?P<access_token>\w+)/(?P<planid>\d+)$', 'plans.views.plan_action.edit_plan', name='edit'),
-	url(r'add/(?P<access_token>\w+)/$', 'plans.views.plan_action.add_plan', name='add'),
+	url(r'add/(?P<access_token>\w+)$', 'plans.views.plan_action.add_plan', name='add'),
 
 	url(r'plan/(?P<access_token>\w+)/(?P<planid>\d+)$', 'plans.views.view_plan.plan_detail', name='detail'),
 	url(r'plan/(?P<access_token>\w+)/(?P<visible_type>\w*)$', 'plans.views.view_plan.list_plans', name='list'),
